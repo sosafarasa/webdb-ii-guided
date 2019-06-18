@@ -11,7 +11,6 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  // retrieve a role by id
   const { id } = req.params;
   Roles.findById(id)
   .then(role => {
@@ -22,17 +21,18 @@ router.get('/:id', (req, res) => {
     }
   })
   .catch(err => res.status(500).json(err))
+  // retrieve a role by id
   // res.send('Write code to retrieve a role by id');
 });
 
 router.post('/', (req, res) => {
-  // add a role to the database
-  // res.send('Write code to add a role');
   Roles.add(req.body)
   .then(role => {
     res.status(201).json(role)
   })
   .catch( err => { res.status(500).json(err)})
+  // add a role to the database
+  // res.send('Write code to add a role');
  /* db('roles').insert(req.body)
  //.then(ids => res.status(201).json(ids[0]))
   .then(ids => {
@@ -45,8 +45,6 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  // update roles
-  // res.send('Write code to modify a role');
   Roles.update(req.params.id, req.body)
   .then( role => {
     if(role){
@@ -55,6 +53,8 @@ router.put('/:id', (req, res) => {
       res.status(404).json({ message: 'There is no role with this ID'})
     }
   })
+  // update roles
+  // res.send('Write code to modify a role');
   /*db('roles').where({ id: req.params.id })
              .update(req.body)
              .then(count => {
@@ -69,8 +69,6 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  // remove roles (inactivate the role)
-  // res.send('Write code to remove a role');
   Roles.remove(req.params.id)
   .then( role => {
     if(role){
@@ -79,6 +77,8 @@ router.delete('/:id', (req, res) => {
       res.status(404).json({ message: 'There is no role with this ID'})
     }
   })
+  // remove roles (inactivate the role)
+  // res.send('Write code to remove a role');
  /* db('roles').where({ id: req.params.id })
              .del()
              .then(count => {
